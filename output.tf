@@ -4,21 +4,24 @@ output "vpc_id" {
 
 }
 
-  output "private_subnet1_id" {
-    value = aws_subnet.prv-1a.*.id
-  }
+output "vpc_id2" {
+  description = "The ID of the VPC"
+  value = aws_vpc.tgw-vpc2.id
 
-  output "private_subnet2_id" {
-    value = aws_subnet.prv-1b.*.id
-  }
-
-
-output "public_subnet1_id" {
-  value = aws_subnet.pub-1a.*.id
 }
 
-output "public_subnet2_id" {
-  value = aws_subnet.pub-1b.*.id
+output "private_subnets" {
+  value = aws_subnet.private_subnets[*]
+}
+
+
+output "private_subnets2" {
+  value = aws_subnet.vpc2-private_subnets[*]
+}
+
+output "public_subnets" {
+  value = aws_subnet.public_subnets[*]
+
 }
   output "tgw_id" {
     description = "The ID of the VPC"
@@ -36,6 +39,10 @@ output "tgw_attachment" {
   value = aws_ec2_transit_gateway_vpc_attachment.tgw-att.id
 }
 
+output "tgw_attachment2" {
+  description = "VPC attachments to TGW"
+  value = aws_ec2_transit_gateway_vpc_attachment.tgw-att2.id
+}
 output "tgw_routetable_id" {
   description = "Transit Gateway Route Table ID"
   value = aws_ec2_transit_gateway_route_table.tgw-rtable.id
@@ -44,6 +51,11 @@ output "tgw_routetable_id" {
 output "tgw_routetable_association" {
   description = "transit gateway routetable association"
   value = aws_ec2_transit_gateway_route_table_association.tgw-rta.id
+}
+
+output "tgw_routetable_association2" {
+  description = "transit gateway routetable association"
+  value = aws_ec2_transit_gateway_route_table_association.tgw-rta2.id
 }
 
 output "instance" {
@@ -55,3 +67,13 @@ output "instance_ip" {
   description = "ec2 instance ip"
   value = aws_instance.access_server.public_ip
 }
+
+output "instance2_prv_ip" {
+  description = "ec2 instance ip"
+  value = aws_instance.priv-access_server.private_ip
+}
+
+//output "aws_ram_resource_share" {
+//  description = "arn of resource share"
+ // value = aws_ram_resource_share.TGW_share.arn
+//}
