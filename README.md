@@ -6,13 +6,14 @@ It also creates
  - transit gateway routes for each vpc
  - transit gateway attachments for each vpc
  
-attach the transit gateway to 2 vpc 
+attach the transit gateway to the 2 vpc's with the following resources
 
 VPC 1 with 
 - public and private subnets
 - public and private route tables 
 - ec2 bastion instance
 - security group for the ec2 instance
+- Internet Gateway and NAT Gateway
 
 VPC 2 with 
 - private subnet
