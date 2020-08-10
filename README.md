@@ -124,3 +124,13 @@ resource "aws_ec2_transit_gateway_route" "tgw-rte" {
 | tgw\_routetable\_association | transit gateway routetable association |
 | tgw\_routetable\_id | Transit Gateway Route Table ID |
 | vpc\_id | The ID of the VPC |
+
+
+
+## Resources and References
+Some useful resources on AWS transit gateway are below -
+https://aws.amazon.com/blogs/networking-and-content-delivery/creating-a-single-internet-exit-point-from-multiple-vpcs-using-aws-transit-gateway/
+
+https://www.youtube.com/watch?v=9Nikqn_02Oc&t=1801s
+
+https://www.youtube.com/watch?v=S9fEydjJ9qo&t=410s
