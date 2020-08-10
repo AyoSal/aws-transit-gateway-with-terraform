@@ -10,9 +10,9 @@ resource "aws_vpc" "tgw-vpc2" {
 
 
 resource "aws_subnet" "vpc2-private_subnets" {
-  count = length(var.prv_subnets)
-  vpc_id = aws_vpc.tgw-vpc2.id
-  cidr_block = var.prv2_subnet_cidrs[count.index]
+  count             = length(var.prv_subnets)
+  vpc_id            = aws_vpc.tgw-vpc2.id
+  cidr_block        = var.prv2_subnet_cidrs[count.index]
   availability_zone = var.azs[count.index]
   tags = {
     Name = var.prv_subnets[count.index]
@@ -37,20 +37,19 @@ resource "aws_instance" "priv-access_server" {
 
 resource "aws_route_table" "vpc2_private_rt" {
   vpc_id = aws_vpc.tgw-vpc2.id
-
+  depends_on = [aws_ec2_transit_gateway.tgw]
   route {
     cidr_block = var.exit_rte_cidr
     gateway_id = aws_ec2_transit_gateway.tgw.id
 
   }
-depends_on = [aws_ec2_transit_gateway.tgw]
   tags = {
     Name = "vpc2_private_rt"
   }
 }
 
 resource "aws_route_table_association" "rta2" {
-   subnet_id   = aws_subnet.vpc2-private_subnets[0].id
+  subnet_id      = aws_subnet.vpc2-private_subnets[0].id
   route_table_id = aws_route_table.vpc2_private_rt.id
 }
 
