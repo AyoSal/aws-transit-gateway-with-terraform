@@ -11,7 +11,7 @@
 #aws_ram_principal_association
 #AWS Account ID  "XXXXXXXXXXXX", "XXXXXXXXXXXX"
 //resource "aws_ram_principal_association" "devops_account" {
-//  principal          = "527490985582"
+//  principal          = "var.principal"
 //  resource_share_arn = "${aws_ram_resource_share.TGW_share.arn}"
 //}
 
